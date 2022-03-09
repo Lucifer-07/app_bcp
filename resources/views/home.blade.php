@@ -33,14 +33,16 @@
         <h5 class="modal-title" id="exampleModalLabel">Nouvelle demande</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form action="{{route('create_demande')}}" method="POST">
       <div class="modal-body">
-        <form>
+       
+          @csrf
             <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Type de la demande:</label>
                 <select  name="type_demande" class="form-control" id="recipient-name">
-                    <option value="mep">Action Mep</option>
-                    <option value="service">demande de service</option>
-                    <option value="incident">Incident</option>
+                    @foreach ($type_demandes as $type_demande)
+                       <option value="{{$type_demande->id}}">{{$type_demande->nom}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-3">
@@ -73,12 +75,13 @@
             </div>
             
           
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
