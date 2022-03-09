@@ -102,7 +102,7 @@
             <tbody>
                 @foreach($demandes as $demande )
               <tr>
-                <th scope="row">{{$demande->type_demande}}</th>
+                <th scope="row">{{App\Models\type_demande::find($demande->type_demande_id)->nom }}</th>
                 <th scope="row">{{$demande->date_atterissage}}</th>
                 <th scope="row">{{$demande->demandeur}}</th>
                 <th scope="row">{{$demande->description}}</th>
