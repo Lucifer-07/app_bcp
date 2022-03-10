@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $demandes=Demande::all();
+        $demandes=Demande::where('entite_id','=',Auth::user()->entite_id)->get();
         $type_demandes=type_demande::all();
         return view('home',['demandes'=>$demandes,'type_demandes'=>$type_demandes]);
     }
